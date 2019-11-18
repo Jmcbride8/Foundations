@@ -10,6 +10,62 @@
   </head>
 
   <body>
+    <!-- START NAVBAR -->
+    <div id="flex-content-container">
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand">
+          <%= link_to image_tag("Lighthouse.png", class: "img-responsive", id: "navbar-logo"), root_path %>
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <%= link_to 'ABOUT US', '#', class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'METHODOLOGY', '#', class: 'nav-link' %>
+            </li>
+            <li class="nav-item" aria-disabled="true">
+              <%= link_to 'PRICING', '#', class: 'nav-link' %>
+            </li>
+            <li class="nav-item" aria-disabled="true">
+              <%= link_to 'FINANCIAL MODELS', '#', class: 'nav-link' %>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li class="nav-item ">
+                <%= link_to 'SIGN OUT' ,destroy_user_session_path, method: :delete, class: 'nav-link' %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'SIGN IN', new_user_session_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'SIGN UP', new_user_registration_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </nav>
+      <br/>
+    <!-- END NAVBAR -->
+    </div>
+    <!-- USER LOGIN NOTIFICATIONS -->
+    <% if notice.present? %>
+        <p class="alert alert-info"><%= notice %></p>
+    <% end %>
+    <% if alert.present? %>
+        <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <!-- END OF USER NOTIFICATION CODE -->
+    <br/><br/>
+
+
     <%= yield %>
   </body>
 </html>

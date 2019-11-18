@@ -1,0 +1,2 @@
+module FinanceModelsHelper
+end

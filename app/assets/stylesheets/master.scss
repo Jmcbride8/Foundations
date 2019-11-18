@@ -1,0 +1,124 @@
+@import "bootstrap";
+
+*{
+  margin:0;
+  padding: 0;
+}
+
+body{
+  margin-top: 0px; 
+  margin:0;
+  font-size:15px;
+  font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
+}
+
+.alert-primary{
+      margin-bottom: 0px;
+}
+
+  #navbar-logo {
+    width: 30px;
+    height:30px;
+    margin-right:20px;
+  }
+
+  a {
+    color: rgba(128, 128, 128,1);
+  }
+
+  a:hover{
+    color: rgba(68, 114, 196,1) !important;
+    text-decoration: none !important;
+  }
+
+  a.navlink:hover{
+    color: rgba(68, 114, 196,1) !important;
+    text-decoration: none !important;
+  }
+
+  .navbar{
+    background-color: white !important;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    z-index:2;
+
+  }
+
+
+li.nav-item{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+h1, h2, h3, h4, h5, h6,p, .navbar {
+  margin: 0;  
+}
+
+
+/*Home page background*/
+.homebackground{
+  position: fixed;
+  background: image_url('FoundationHomepage.png');
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding: 0px;
+  padding-top: 30vh;
+  height:100vh; 
+  align-items:center;
+  vertical-align: middle;
+}
+
+.transparent-layer h1{
+  font-size: 60px;
+  font-style: normal;
+  z-index: 2;
+}
+
+.transparent-layer h2 {
+  font-size: 20px;
+  font-style: italic;
+  z-index: 2;
+}
+
+/* semi-transparent box over the background   */
+.transparent-layer {
+  background-color: rgba(68, 114, 196, 0.6);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  z-index: 1;
+  align-items: center;
+  text-align: center;
+  color: white;
+  font: calibri;
+  }
+
+/*login & registration page background*/
+.devise-background{
+  position: fixed;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  margin-left: 0;
+
+}
+
+.booyah-box {
+  -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
+  box-shadow: 1px 1px 2px 0 #d0d0d0;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
+  padding: 30px 40px;
+  margin-top: 5vh;
+}
+
+hr.thin {
+  padding:0px;
+  height: 1px;
+  vertical-align:middle;
+  margin: 0% 20% 0% 20%;
+}
