@@ -1,0 +1,20 @@
+<br/><br/><br/><br/><br/><p> Set up the model</p>
+
+  <%= simple_form_for @model do |f| %>
+    <%= f.input :price %>
+    <%= f.input :closing_costs %>
+    <%= f.input :repair_costs %>
+    <%= f.input :after_repair_value %>
+    <%= f.input :rent_monthly %>
+    <%= f.input :property_upkeep_monthly %>
+    <%= f.input :insurance_monthly %>
+    <%= f.input :hoa_fees_monthly %>
+    <%= f.input :utilities_monthly %>
+    <br/>
+    <%= f.submit "Next", class: 'btn btn-primary' %>
+    <br/>
+  <% end %>
+
+
+
+</div>

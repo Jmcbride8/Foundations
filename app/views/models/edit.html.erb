@@ -1,0 +1,56 @@
+<br/><br/><br/>
+<h3> <%=@status %> </h3>
+<br/>
+
+
+  <!-- FINANCING -->
+  <% if @status == "financing" %>
+    <%= simple_form_for @model do |f| %>
+      <%= f.input :downpayment_percent %>
+      <%= f.input :interest_rate_percent %>
+      <%= f.input :property_mortgage_insurance_monthly %>
+      <%= f.input :loan_term_length_years %>
+      <%= hidden_field_tag(:status, @status) %>
+      <br/>
+      <%= f.submit "Next", class: 'btn btn-primary' %>
+      <br/>
+    <% end %>
+  <% end %>
+
+  <!-- MANAGEMENT -->
+  <% if @status == "management" %>
+    <%= simple_form_for @model do |f| %>
+      <%= f.input :management_fees_percent %>
+      <%= f.input :average_tenant_stay_yrs %>
+      <%= f.input :average_vacancy_length_months %>
+      <%= f.input :earnings_reinvestment_percent %>
+      <%= hidden_field_tag(:status, @status) %>
+      <br/>
+      <%= f.submit "Next", class: 'btn btn-primary' %>
+      <br/>
+    <% end %>
+  <% end %>
+
+  <!-- LOCAL ECONOMY -->
+  <% if @status == "local_economy" %>
+    <%= simple_form_for @model do |f| %>
+      <%= f.input :value_growth_percent %>
+      <%= f.input :property_taxes_percent %>
+      <%= hidden_field_tag(:status, @status) %>
+      <br/>
+      <%= f.submit "Next", class: 'btn btn-primary' %>
+      <br/>
+    <% end %>
+  <% end %>
+
+
+  <!-- NATIONAL ECONOMY -->
+  <% if @status == "macro_economy" %>
+    <%= simple_form_for @model do |f| %>
+      <%= f.input :inflation_rate_percent %>
+      <%= hidden_field_tag(:status, @status) %>
+      <br/>
+      <%= f.submit "Next", class: 'btn btn-primary' %>
+      <br/>
+    <% end %>
+  <% end %>

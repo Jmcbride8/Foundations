@@ -69,5 +69,11 @@ gem 'bootstrap', '~> 4.3.1'
 #Gem for easy to create forms
 gem 'simple_form'
 
-#Gem for user signin and authentication
+# Gem for user signin and authentication
 gem 'devise'
+
+# debug gems
+gem 'pry-byebug'
+gem 'pry-rails'
+gem 'pry-stack_explorer'
+gem 'awesome_print'
