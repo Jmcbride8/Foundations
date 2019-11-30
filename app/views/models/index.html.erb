@@ -2,8 +2,13 @@
 
 <br/><br/><br/>
 <h3> DASHBOARD </h3>
-
-
+<br/>
+<% @models.each do |fin_model| %>
+  <% if fin_model.id.present? %>
+    <p><%= fin_model.id %></p>
+    <br/>
+  <% end %>
+<% end %>
 
 <h3> begin your model</h3>
 <br/>

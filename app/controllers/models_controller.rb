@@ -3,7 +3,7 @@ class ModelsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @model = Model.all
+    @models = current_user.models
   end
 
   def new
