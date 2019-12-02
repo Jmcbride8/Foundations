@@ -1,4 +1,10 @@
-<br/><br/><br/><br/><br/><p> Set up the model</p>
+<br/><br/><br/><br/>
+
+
+<div class=" col-sm-10 col-lg-8 offset-sm-1 offset-lg-2" >
+  
+  <h3 class="uppercase"><%= @status %></h3>
+  <br/><br/>
 
   <%= simple_form_for @model do |f| %>
     <%= f.input :price %>
@@ -11,10 +17,7 @@
     <%= f.input :hoa_fees_monthly %>
     <%= f.input :utilities_monthly %>
     <br/>
-    <%= f.submit "Next", class: 'btn btn-primary' %>
-    <br/>
+    <%= f.submit "Next", class: 'btn btn-outline-primary' %>
+    <br/><br/><br/>
   <% end %>
-
-
-
 </div>

@@ -1,3 +1,4 @@
+@import "bootstrap";
 
 *{
   margin:0;
@@ -121,3 +122,8 @@ hr.thin {
   vertical-align:middle;
   margin: 0% 20% 0% 20%;
 }
+
+/*code to capitalize or normalize text - particularly headings*/
+.lowercase {text-transform: lowercase; }
+.uppercase { text-transform: uppercase; }
+.capitalize { text-transform: capitalize; }

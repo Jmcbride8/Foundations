@@ -8,6 +8,7 @@ class ModelsController < ApplicationController
 
   def new
     @model = Model.new
+    @status = "property"
   end
 
   def create

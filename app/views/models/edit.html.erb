@@ -1,7 +1,9 @@
-<br/><br/><br/>
-<h3> <%=@status %> </h3>
-<br/>
+<br/><br/><br/><br/>
 
+<div class=" col-sm-10 col-lg-8 offset-sm-1 offset-lg-2" >
+
+  <h3 class="uppercase"><%= @status %></h3>
+  <br/><br/>
 
   <!-- FINANCING -->
   <% if @status == "financing" %>
@@ -12,8 +14,8 @@
       <%= f.input :loan_term_length_years %>
       <%= hidden_field_tag(:status, @status) %>
       <br/>
-      <%= f.submit "Next", class: 'btn btn-primary' %>
-      <br/>
+      <%= f.submit "Next", class: 'btn btn-outline-primary' %>
+      <br/><br/><br/>
     <% end %>
   <% end %>
 
@@ -26,8 +28,8 @@
       <%= f.input :earnings_reinvestment_percent %>
       <%= hidden_field_tag(:status, @status) %>
       <br/>
-      <%= f.submit "Next", class: 'btn btn-primary' %>
-      <br/>
+      <%= f.submit "Next", class: 'btn btn-outline-primary' %>
+      <br/><br/><br/>
     <% end %>
   <% end %>
 
@@ -38,8 +40,8 @@
       <%= f.input :property_taxes_percent %>
       <%= hidden_field_tag(:status, @status) %>
       <br/>
-      <%= f.submit "Next", class: 'btn btn-primary' %>
-      <br/>
+      <%= f.submit "Next", class: 'btn btn-outline-primary' %>
+      <br/><br/><br/>
     <% end %>
   <% end %>
 
@@ -50,7 +52,9 @@
       <%= f.input :inflation_rate_percent %>
       <%= hidden_field_tag(:status, @status) %>
       <br/>
-      <%= f.submit "Next", class: 'btn btn-primary' %>
-      <br/>
+      <%= f.submit "Next", class: 'btn btn-outline-primary' %>
+      <br/><br/><br/>
     <% end %>
   <% end %>
+
+</div>

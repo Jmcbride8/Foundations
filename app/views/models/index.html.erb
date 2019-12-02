@@ -1,20 +1,27 @@
+<br/><br/><br/><br/>
 
+<div class=" col-sm-10 col-lg-8 offset-sm-1 offset-lg-2" >
 
-<br/><br/><br/>
-<h3> DASHBOARD </h3>
-<br/>
-<% @models.each do |fin_model| %>
-  <% if fin_model.id.present? %>
-    <p><%= fin_model.id %></p>
-    <br/>
+  <div class="heading-title text-center">
+    <h3> DASHBOARD </h3>
+    <p class="p-top-30 half-txt">Create and compare models.
+      <br/>
+    Find the property to take you to retirement! </p>
+  </div>
+
+  <% @models.each do |fin_model| %>
+    <% if fin_model.id.present? %>
+      <p><%= "Property #{fin_model.id}" %></p>
+      <br/>
+    <% end %>
   <% end %>
-<% end %>
 
-<h3> begin your model</h3>
-<br/>
-<%= link_to "CREATE A MODEL", new_model_path, class: "btn btn-outline-primary" %>
+  <br/>
+  <h5> Add a new property... </h5>
+  <br/>
+  <%= link_to "CREATE A MODEL", new_model_path, class: "btn btn-outline-primary" %>
 
-
+</div>
 
 
 
