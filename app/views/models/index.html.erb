@@ -9,19 +9,30 @@
     Find the property to take you to retirement! </p>
   </div>
 
-  <% @models.each do |fin_model| %>
-    <% if fin_model.id.present? %>
-      <p><%= "Property #{fin_model.id}" %></p>
-      <br/>
+  <div class="container">
+    <% @models.each do |fin_model| %>
+      <% if fin_model.id.present? %>
+        <div class="row">
+          <div class="col-sm">
+            <p><%= "Property #{fin_model.id}" %></p>
+          </div>
+          <div class="col-sm">
+            <p><%= "Yearly income - #{fin_model.rent_monthly*12}" %></p>
+          </div>
+          <br/>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 
-  <br/>
-  <h5> Add a new property... </h5>
-  <br/>
-  <%= link_to "CREATE A MODEL", new_model_path, class: "btn btn-outline-primary" %>
-
+  <br/><br/>
+  <div class="text-center">
+    <h5> Add a new property... </h5>
+    <br/>
+    <%= link_to "CREATE A MODEL", new_model_path, class: "btn btn-outline-primary" %>
+  </div>
 </div>
+<br/><br/><br/>
 
 
 
