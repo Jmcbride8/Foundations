@@ -12,7 +12,7 @@
   <body>
     <!-- START NAVBAR -->
     <div id="flex-content-container">
-      <nav class="navbar navbar-inverse navbar-toggleable-sm navbar-light bg-faded">
+      <nav class="navbar fixed-top navbar-toggleable-sm navbar-light bg-faded">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -52,7 +52,6 @@
 
         </div>
       </nav>
-      <br/>
     <!-- END NAVBAR -->
     </div>
     <!-- USER LOGIN NOTIFICATIONS -->
@@ -63,7 +62,6 @@
         <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <!-- END OF USER NOTIFICATION CODE -->
-    <br/>
 
 
     <%= yield %>
