@@ -80,3 +80,9 @@ gem 'pry-byebug'
 gem 'pry-rails'
 gem 'pry-stack_explorer'
 gem 'awesome_print'
+
+# secure key storage
+gem 'figaro'
+
+# Stripe integration for payments
+gem 'stripe'

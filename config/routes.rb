@@ -7,9 +7,9 @@ Rails.application.routes.draw do
 
   get 'about', to: 'home#about'
   get 'methodology', to: 'home#methodology'
-  resources :products, only: [:index]
+  resources :products, only: [:index, :show] do 
+    resources :subscriptions, only: [:create]
+  end
   resources :models
-
-
 
 end
