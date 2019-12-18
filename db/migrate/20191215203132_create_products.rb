@@ -6,6 +6,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.decimal :price
       t.timestamps
     end
-    add_index :products, [:subscription_id, :product_id]
+    add_index :products, [:subscription_id,:product_id]
+    add_index :products
   end
 end

@@ -13,15 +13,21 @@
         <%= f.input :password,
                     required: false,
                     input_html: { autocomplete: "current-password" } %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
       </div>
-
-      <div class="form-actions float-right">
-        <%= f.button :submit, "Log in", class: 'btn btn-primary'%>
+      <div class="rows">
+        <div class="offset-1 float-left">
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
+        <div class="form-actions float-right">
+          <%= f.button :submit, "Log in", class: 'btn btn-primary'%>
+        </div>
       </div>
     <% end %>
 
-    <br/>
-    <%= render "devise/shared/links" %>
+    <br/><br/>
+    <div class="col-sm-5 col-md-6">
+     <%= render "devise/shared/links" %>
+    </div>
+
   </div>
   <br/><br/><br/>
