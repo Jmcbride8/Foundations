@@ -86,3 +86,8 @@ gem 'figaro'
 
 # Stripe integration for payments
 gem 'stripe'
+
+# rspec Test Development Suite
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+end
