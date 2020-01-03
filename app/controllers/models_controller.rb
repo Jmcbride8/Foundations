@@ -35,12 +35,12 @@ class ModelsController < ApplicationController
       redirect_to edit_model_path(@model.id, status: 'management')
     elsif @status == "management"
       current_model = @model.update(management_params)
-      redirect_to edit_model_path(@model.id, status: 'local_economy')
-    elsif @status =="local_economy"
+      redirect_to edit_model_path(@model.id, status: 'local economy')
+    elsif @status =="local economy"
       current_model = @model.update(local_economy_params)
-      redirect_to edit_model_path(@model.id, status: 'macro_economy')
-    elsif @status =="macro_economy"
-      current_model = @model.update(macro_economy_params)
+      redirect_to edit_model_path(@model.id, status: 'national economy')
+    elsif @status =="national economy"
+      current_model = @model.update(national_economy_params)
       redirect_to models_path
     end
   end
@@ -61,7 +61,7 @@ class ModelsController < ApplicationController
   def local_economy_params
     params.require(:model).permit(:value_growth_percent, :property_taxes_percent)
   end
-  def macro_economy_params
+  def national_economy_params
     params.require(:model).permit(:inflation_rate_percent)
   end
 

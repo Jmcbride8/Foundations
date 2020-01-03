@@ -13,22 +13,27 @@
   <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Margin</th>
-      <th scope="col">Annual Cash Flow</th>
-      <th scope="col">Annual Cash Flow before Loan Repayments</th>
+      <th scope="col">ID</th>
+      <th scope="col">Downpayment</th>
+      <th scope="col">Annual Revenue</th>
+      <th scope="col">Annual Expenses</th>
+      <th scope="col">Annual Profit</th>
+      <th scope="col">Profit/Asset Price</th>
       <th scope="col">Years to Breakeven</th>
-      <th scope="col">Years to Loan Payoff</th>
     </tr>
   </thead>
   <tbody>
     <% @models.each do |fin_model| %>
       <% if fin_model.id.present? %>
+        
         <tr>
-          <th scope="row"><%= fin_model.id %></th>
-          <td>fin_model.rent_monthly</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <th scope="row"> <%= fin_model.id %> </th>
+          <td>&#36;<%= fin_model.downpayment_percent %></td>
+          <td>&#36;<%= fin_model.rent_monthly*12 %></td>
+          <td>&#36;<%= %></td>
+          <td>&#36;<%= %></td>
+          <td><%= %></td>
+          <td> </td>
         </tr>
       <% end %>
     <% end %>
