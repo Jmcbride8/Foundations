@@ -6,7 +6,7 @@ require 'rails_helper'
 RSpec.describe ModelsController, type: :controller do
 
   describe "models#index action" do
-    it "should launch the models page correctly" do
+    it "should launch and sign into the models page correctly" do
       user = FactoryBot.create(:user)
       sign_in user
       get :index

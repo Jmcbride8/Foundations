@@ -8,10 +8,10 @@
   <!-- FINANCING -->
   <% if @status == "financing" %>
     <%= simple_form_for @model do |f| %>
-      <%= f.input :downpayment_percent, placeholder: '20', input_html: {value: '20'} , label: "Percent Downpayment" %>
-      <%= f.input :interest_rate_percent, placeholder: '3.4',  input_html: {value: '3.4'}, label: "Mortgage Interest Rate (%)" %>
-      <%= f.input :property_mortgage_insurance_monthly, placeholder: '0',  input_html: {value: '0'}, label: "Monthly Property Mortgage Insurance (if any)" %>
-      <%= f.input :loan_term_length_years, placeholder: '30',  input_html: {value: '30'}, label: "Mortgage Term Length (years)" %>
+      <%= f.input :downpayment_percent, placeholder: '20', input_html: {value: '20'} , label: "Percent Downpayment", type: 'number' %>
+      <%= f.input :interest_rate_percent, placeholder: '3.4',  input_html: {value: '3.4'}, label: "Mortgage Interest Rate (%)", type: 'number' %>
+      <%= f.input :property_mortgage_insurance_monthly, placeholder: '0',  input_html: {value: '0'}, label: "Monthly Property Mortgage Insurance (if any)", type: 'number' %>
+      <%= f.input :loan_term_length_years, placeholder: '30',  input_html: {value: '30'}, label: "Mortgage Term Length (years)", type: 'number' %>
       <%= hidden_field_tag(:status, @status) %>
       <br/>
       <%= f.submit "Next", class: 'btn btn-outline-primary' %>
@@ -22,10 +22,14 @@
   <!-- MANAGEMENT -->
   <% if @status == "management" %>
     <%= simple_form_for @model do |f| %>
-      <%= f.input :management_fees_percent, placeholder: '10',  input_html: {value: '10'}, label: "Property Management Fees (% of rent)" %>
-      <%= f.input :average_tenant_stay_yrs, placeholder: '2',  input_html: {value: '2'}, label: "Average Tenant Stay (years)" %>
-      <%= f.input :average_vacancy_length_months, placeholder: '1',  input_html: {value:'1'}, label: "Average Vacancy Length (months)" %>
-      <%= f.input :earnings_reinvestment_percent, placeholder: '0',  input_html: {value: '0'}, label: "Earnings Reinvestment Percent" %>
+      <%= f.input :management_fees_percent, placeholder: '10',  input_html: {value: '10'}, label: "Property Management Fees (% of rent)", type: 'number' %>
+      <%= f.input :average_tenant_stay_yrs, placeholder: '2',  input_html: {value: '2'}, label: "Average Tenant Stay (years)", type: 'number' %>
+      <%= f.input :average_vacancy_length_months, placeholder: '1',  input_html: {value:'1'}, label: "Average Vacancy Length (months)", type: 'number' %>
+      <%= f.input :earnings_reinvestment_percent, 
+      placeholder: '0',  
+      input_html: {value: '0'}, 
+      label: "Earnings Reinvestment Percent", 
+      type: 'number' %>
       <%= hidden_field_tag(:status, @status) %>
       <br/>
       <%= f.submit "Next", class: 'btn btn-outline-primary' %>
@@ -36,8 +40,8 @@
   <!-- LOCAL ECONOMY -->
   <% if @status == "local economy" %>
     <%= simple_form_for @model do |f| %>
-      <%= f.input :value_growth_percent, placeholder: '0',  input_html: {value: '0'}, label: "Property Value Growth (%)" %>
-      <%= f.input :property_taxes_percent, placeholder: '0',  input_html: {value:'0'}, label: "Annual Property Tax Rate (%)" %>
+      <%= f.input :value_growth_percent, placeholder: '0',  input_html: {value: '0'}, label: "Property Value Growth (%)", type: 'number' %>
+      <%= f.input :property_taxes_percent, placeholder: '0',  input_html: {value:'0'}, label: "Annual Property Tax Rate (%)", type: 'number' %>
       <%= hidden_field_tag(:status, @status) %>
       <br/>
       <%= f.submit "Next", class: 'btn btn-outline-primary' %>
@@ -49,7 +53,7 @@
   <!-- NATIONAL ECONOMY -->
   <% if @status == "national economy" %>
     <%= simple_form_for @model do |f| %>
-      <%= f.input :inflation_rate_percent, placeholder: '2',  input_html: {value:'2'}, label: "Annual Inflation Rate Estimate (%)" %>
+      <%= f.input :inflation_rate_percent, placeholder: '2',  input_html: {value:'2'}, label: "Annual Inflation Rate Estimate (%)", type: 'number' %>
       <%= hidden_field_tag(:status, @status) %>
       <br/>
       <%= f.submit "Next", class: 'btn btn-outline-primary' %>

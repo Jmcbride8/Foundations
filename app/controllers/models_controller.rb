@@ -56,7 +56,7 @@ class ModelsController < ApplicationController
     params.require(:model).permit(:downpayment_percent, :interest_rate_percent, :property_mortgage_insurance_monthly,:loan_term_length_years)
   end
   def management_params
-    params.require(:model).permit(:management_fees_percent, :average_tenant_stay_yrs, :average_vacancy_length_months)
+    params.require(:model).permit(:management_fees_percent, :average_tenant_stay_yrs, :average_vacancy_length_months, :earnings_reinvestment_percent)
   end
   def local_economy_params
     params.require(:model).permit(:value_growth_percent, :property_taxes_percent)

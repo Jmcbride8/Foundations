@@ -7,15 +7,19 @@
   <br/><br/>
 
   <%= simple_form_for @model do |f| %>
-    <%= f.input :price, placeholder: '200,000', input_html: {value: '200,000'} %>
-    <%= f.input :closing_costs, placeholder: '3,000',  input_html: {value: '3000'}, label: "Closing costs" %>
-    <%= f.input :repair_costs, placeholder: '0',  input_html: {value: '0'}, label: "Repair costs" %>
-    <%= f.input :after_repair_value, placeholder: '200,000',  input_html: {value: '200,000'}, label: "Value after repairs"  %>
-    <%= f.input :rent_monthly, placeholder: '1650',  input_html: {value: '1650'}, label: "Monthly rent" %>
-    <%= f.input :property_upkeep_monthly, placeholder: '100',  input_html: {value: '100'}, label: "Monthly property upkeep" %>
-    <%= f.input :insurance_monthly, placeholder: '0',  input_html: {value: '0'}, label: "Monthly insurance" %>
-    <%= f.input :hoa_fees_monthly, placeholder: '0',  input_html: {value: '0'}, label: "Monthly HOA fees" %>
-    <%= f.input :utilities_monthly, placeholder: '0',  input_html: {value: '0'} , label: "Monthly utilities (if paid by landlord)"%>
+    <%= f.input :price, placeholder: '200000', input_html: {value: '200000'}, type: 'number' %>
+    <%= f.input :closing_costs, placeholder: '3000',  input_html: {value: '3000'}, label: "Closing costs", type: 'number' %>
+    <%= f.input :repair_costs, placeholder: '0',  input_html: {value: '0'}, label: "Repair costs", type: 'number' %>
+    <%= f.input :after_repair_value, 
+    placeholder: '200000', 
+    input_html: {value: '200000'}, 
+    label: "Value after repairs", 
+    type: 'number'  %>
+    <%= f.input :rent_monthly, placeholder: '1650',  input_html: {value: '1650'}, label: "Monthly rent", type: 'number' %>
+    <%= f.input :property_upkeep_monthly, placeholder: '100',  input_html: {value: '100'}, label: "Monthly property upkeep", type: 'number' %>
+    <%= f.input :insurance_monthly, placeholder: '0',  input_html: {value: '0'}, label: "Monthly insurance", type: 'number' %>
+    <%= f.input :hoa_fees_monthly, placeholder: '0',  input_html: {value: '0'}, label: "Monthly HOA fees", type: 'number' %>
+    <%= f.input :utilities_monthly, placeholder: '0',  input_html: {value: '0'} , label: "Monthly utilities (if paid by landlord)", type: 'number' %>
     <br/>
     <%= f.submit "Next", class: 'btn btn-outline-primary' %>
     <br/><br/><br/>
