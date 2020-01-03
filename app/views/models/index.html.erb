@@ -1,6 +1,6 @@
 <br/><br/><br/><br/>
 
-<div class=" col-sm-10 col-lg-8 offset-sm-1 offset-lg-2" >
+<div class=" col-sm-10 col-lg-10 offset-sm-1 offset-lg-1" >
 
   <div class="heading-title text-center">
     <h3> DASHBOARD </h3>
@@ -9,21 +9,31 @@
     Find the property to take you to retirement! </p>
   </div>
 
-  <div class="container">
+
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Margin</th>
+      <th scope="col">Annual Cash Flow</th>
+      <th scope="col">Annual Cash Flow before Loan Repayments</th>
+      <th scope="col">Years to Breakeven</th>
+      <th scope="col">Years to Loan Payoff</th>
+    </tr>
+  </thead>
+  <tbody>
     <% @models.each do |fin_model| %>
       <% if fin_model.id.present? %>
-        <div class="row">
-          <div class="col-sm">
-            <p><%= "Property #{fin_model.id}" %></p>
-          </div>
-          <div class="col-sm">
-            <p><%= "Yearly income - #{fin_model.rent_monthly*12}" %></p>
-          </div>
-          <br/>
-        </div>
+        <tr>
+          <th scope="row"><%= fin_model.id %></th>
+          <td>fin_model.rent_monthly</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
       <% end %>
     <% end %>
-  </div>
+  </tbody>
+</table>
 
   <br/><br/>
   <div class="text-center">

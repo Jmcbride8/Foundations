@@ -6,6 +6,6 @@ class User < ApplicationRecord
 
   has_many :models
   has_one :subscription
-
+  has_one :admin
   
 end
