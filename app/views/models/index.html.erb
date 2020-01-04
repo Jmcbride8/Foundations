@@ -23,18 +23,30 @@
     </tr>
   </thead>
   <tbody>
+    <% @num = 1 %>
     <% @models.each do |fin_model| %>
       <% if fin_model.id.present? %>
         
+        <% @downpayment = ((fin_model.downpayment_percent/100) * fin_model.price).round(0) %>
+
+        <% @revenue = fin_model.rent_monthly*12 %>
+
+        <% @operating_expenses = (fin_model.property_upkeep_monthly + fin_model.insurance_monthly + fin_model.hoa_fees_monthly + fin_model.utilities_monthly + ((fin_model.management_fees_percent/100) * fin_model.rent_monthly) + fin_model.property_mortgage_insurance_monthly) * 12
+        %>
+
+        <% @financing_expenses = (fin_model.interest_rate_percent/100) * ((1-(fin_model.downpayment_percent/100)) * fin_model.price) %>
+
         <tr>
-          <th scope="row"> <%= fin_model.id %> </th>
-          <td>&#36;<%= fin_model.downpayment_percent %></td>
-          <td>&#36;<%= fin_model.rent_monthly*12 %></td>
-          <td>&#36;<%= %></td>
-          <td>&#36;<%= %></td>
-          <td><%= %></td>
-          <td> </td>
+          <th scope="row"> <%= @num %></th>
+          <td>&#36;<%= @downpayment %></td>
+          <td>&#36;<%= @revenue %></td>
+          <td>&#36;<%= @financing_expenses + @operating_expenses %></td>
+          <td>&#36;<%= @revenue  - (@financing_expenses + @operating_expenses) %></td>
+          <td><%= ((@revenue  - (@financing_expenses + @operating_expenses))/fin_model.price)*100 %></td>
+          <td><%= (1/((@revenue  - (@financing_expenses + @operating_expenses))/fin_model.price)).round(1) %></td>
         </tr>
+
+        <% @num += 1 %>
       <% end %>
     <% end %>
   </tbody>
