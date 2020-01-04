@@ -42,7 +42,7 @@
           <td>&#36;<%= @revenue %></td>
           <td>&#36;<%= @financing_expenses + @operating_expenses %></td>
           <td>&#36;<%= @revenue  - (@financing_expenses + @operating_expenses) %></td>
-          <td><%= ((@revenue  - (@financing_expenses + @operating_expenses))/fin_model.price)*100 %></td>
+          <td><%= (((@revenue  - (@financing_expenses + @operating_expenses))/fin_model.price)*100).round(2) %></td>
           <td><%= (1/((@revenue  - (@financing_expenses + @operating_expenses))/fin_model.price)).round(1) %></td>
         </tr>
 
@@ -54,9 +54,13 @@
 
   <br/><br/>
   <div class="text-center">
-    <h5> Add a new property... </h5>
-    <br/>
-    <%= link_to "CREATE A MODEL", new_model_path, class: "btn btn-outline-primary" %>
+    <% if @subscription != "none" or @num <4 %>
+      <h5> Add a new property... </h5>
+      <br/>
+      <%= link_to "CREATE A MODEL", new_model_path, class: "btn btn-outline-primary" %>
+    <% else %>
+      <%= link_to 'SUBSCRIBE TO CONTINUE ADDING MODELS', products_path, class: 'btn btn-warning text-center' %>
+    <% end %>
   </div>
 </div>
 <br/><br/><br/>

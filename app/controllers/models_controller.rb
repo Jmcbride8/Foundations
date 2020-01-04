@@ -4,6 +4,11 @@ class ModelsController < ApplicationController
 
   def index
     @models = current_user.models
+    if Subscription.where(user_id: @current_user_id).exists?
+      @subscription = current_user.subscription.id
+    else
+      @subscription = "none"
+    end
   end
 
   def new

@@ -6,7 +6,7 @@ class SubscriptionsController < ApplicationController
     @current_product ||= Product.find(params[:product_id])
 
     # Amount in cents
-    @amount =  1000
+    @amount =  @current_product.price
 
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],

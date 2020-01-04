@@ -1,5 +1,6 @@
   <br/>
   <br/><br/><br/>
+
   <div class="heading-title text-center">
       <h3>PRODUCTS & PRICING</h3>
       <p class="p-top-30 half-txt">
@@ -8,7 +9,8 @@
       Start with our limited time free-trial, expert-led trainings, or dive deep in with our full products</p>
   </div>
 
-  <% if current_user %>
+
+  <% if current_user and @subscription == "none" %>
     <div class="text-center">
       <%= form_tag product_subscriptions_path(@products) do %>
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -16,13 +18,17 @@
         background-color= "rgba(68, 114, 196,1)"
         data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
         data-email="<%= current_user.email %>"
-        data-description="Monthly Subscription"
-        data-amount=1000
+        data-description= "<%= @products.description %>"
+        data-amount= "<%= @products.price %>"
         data-locale="auto">
       </script>
       
     </div>
     <% end %>
+  <% elsif current_user and @subscription != "none"%>
+    <div class=" text-center p-3 mb-2 bg-success text-white">
+      <h4>You are Subscribed!</h4>
+    </div>
   <% else %>
      <div class="text-center">
       <%= link_to 'LOG IN TO SUBSCRIBE', user_session_path, class: 'btn btn-primary text-center' %>
