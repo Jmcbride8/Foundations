@@ -38,10 +38,10 @@
 
         <tr>
           <th scope="row"> <%= @num %></th>
-          <td>&#36;<%= @downpayment %></td>
-          <td>&#36;<%= @revenue %></td>
-          <td>&#36;<%= @financing_expenses + @operating_expenses %></td>
-          <td>&#36;<%= @revenue  - (@financing_expenses + @operating_expenses) %></td>
+          <td><%= number_to_currency(@downpayment)%></td>
+          <td><%= number_to_currency(@revenue) %></td>
+          <td><%= number_to_currency(@financing_expenses + @operating_expenses) %></td>
+          <td><%= number_to_currency(@revenue  - (@financing_expenses + @operating_expenses)) %></td>
           <td><%= (((@revenue  - (@financing_expenses + @operating_expenses))/fin_model.price)*100).round(2) %></td>
           <td><%= (1/((@revenue  - (@financing_expenses + @operating_expenses))/fin_model.price)).round(1) %></td>
         </tr>
