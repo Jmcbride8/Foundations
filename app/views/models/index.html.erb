@@ -17,8 +17,7 @@
       <th scope="col">Downpayment</th>
       <th scope="col">Annual Revenue</th>
       <th scope="col">Annual Expenses</th>
-      <th scope="col">Annual Profit</th>
-      <th scope="col">Profit/Asset Price</th>
+      <th scope="col">Price / Profit</th>
       <th scope="col">Years to Breakeven</th>
     </tr>
   </thead>
@@ -36,14 +35,14 @@
 
         <% @financing_expenses = (fin_model.interest_rate_percent/100) * ((1-(fin_model.downpayment_percent/100)) * fin_model.price) %>
 
+
         <tr>
           <th scope="row"> <%= @num %></th>
           <td><%= number_to_currency(@downpayment)%></td>
           <td><%= number_to_currency(@revenue) %></td>
           <td><%= number_to_currency(@financing_expenses + @operating_expenses) %></td>
-          <td><%= number_to_currency(@revenue  - (@financing_expenses + @operating_expenses)) %></td>
-          <td><%= (((@revenue  - (@financing_expenses + @operating_expenses))/fin_model.price)*100).round(2) %></td>
-          <td><%= (1/((@revenue  - (@financing_expenses + @operating_expenses))/fin_model.price)).round(1) %></td>
+          <td><%= (fin_model.price/(@revenue  - (@financing_expenses + @operating_expenses))).round(2) %></td>
+          <td><%= (1/((@revenue  - (@financing_expenses + @operating_expenses))/@downpayment)).round(1) %></td>
         </tr>
 
         <% @num += 1 %>
