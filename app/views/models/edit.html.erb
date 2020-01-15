@@ -1,20 +1,37 @@
-<br/><br/><br/><br/>
+<br/><br/>
 
-<div class=" col-sm-10 col-lg-8 offset-sm-1 offset-lg-2" >
+<div class="col-sm-10 offset-sm-1">
 
-  <h3 class="uppercase"><%= @status %></h3>
-  <br/><br/>
+  <h3 class="uppercase model-header"><%= @status %></h3>
+  <hr class= "model-header-line">
+  <h4 class= "section-header "> ASSUMPTIONS </h4>
+  <br/>
 
   <!-- FINANCING -->
   <% if @status == "financing" %>
     <%= simple_form_for @model do |f| %>
-      <%= f.input :downpayment_percent, placeholder: '20', input_html: {value: '20'} , label: "Percent Downpayment", type: 'number' %>
-      <%= f.input :interest_rate_percent, placeholder: '3.4',  input_html: {value: '3.4'}, label: "Mortgage Interest Rate (%)", type: 'number' %>
-      <%= f.input :property_mortgage_insurance_monthly, placeholder: '0',  input_html: {value: '0'}, label: "Monthly Property Mortgage Insurance (if any)", type: 'number' %>
-      <%= f.input :loan_term_length_years, placeholder: '30',  input_html: {value: '30'}, label: "Mortgage Term Length (years)", type: 'number' %>
-      <%= hidden_field_tag(:status, @status) %>
+    <div class="simple_form_content">
+        <div class="row expenses_header">
+            <p>EXPENSES</p>
+        </div>
+        <div class="row text-center expenses_bg ">
+          <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :downpayment_percent, placeholder: '20', input_html: {value: '20'} , label: "DOWNPAYMENT PERCENT", type: 'number' %>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :interest_rate_percent, placeholder: '3.4',  input_html: {value: '3.4'}, label: "MORTGAGE INTEREST RATE (%)", type: 'number' %>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :property_mortgage_insurance_monthly, placeholder: '0',  input_html: {value: '0'}, label: "MONTHLY PROPERTY MANAGEMENT INSURANCE", type: 'number' %>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :loan_term_length_years, placeholder: '30',  input_html: {value: '30'}, label: "MORTGAGE TERM LENGTH (YEARS)", type: 'number' %>
+          </div>
+          <%= hidden_field_tag(:status, @status) %>
+        </div>
+      </div>
       <br/>
-      <%= f.submit "Next", class: 'btn btn-outline-primary' %>
+      <%= f.submit "NEXT", class: 'btn btn-outline-primary float-right' %>
       <br/><br/><br/>
     <% end %>
   <% end %>
@@ -22,17 +39,29 @@
   <!-- MANAGEMENT -->
   <% if @status == "management" %>
     <%= simple_form_for @model do |f| %>
-      <%= f.input :management_fees_percent, placeholder: '10',  input_html: {value: '10'}, label: "Property Management Fees (% of rent)", type: 'number' %>
-      <%= f.input :average_tenant_stay_yrs, placeholder: '2',  input_html: {value: '2'}, label: "Average Tenant Stay (years)", type: 'number' %>
-      <%= f.input :average_vacancy_length_months, placeholder: '1',  input_html: {value:'1'}, label: "Average Vacancy Length (months)", type: 'number' %>
-      <%= f.input :earnings_reinvestment_percent, 
-      placeholder: '0',  
-      input_html: {value: '0'}, 
-      label: "Earnings Reinvestment Percent", 
-      type: 'number' %>
-      <%= hidden_field_tag(:status, @status) %>
+    <div class="simple_form_content">
+        <div class="row expenses_header">
+            <p>EXPENSES</p>
+        </div>
+        <div class="row text-center expenses_bg ">
+          <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :management_fees_percent, placeholder: '10',  input_html: {value: '10'}, label: "PROPERTY MANAGEMENT FEES AS PERCENT OF RENT", type: 'number' %>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :average_tenant_stay_yrs, placeholder: '2',  input_html: {value: '2'}, label: "AVERAGE TENANT STAY (YEARS)", type: 'number' %>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :average_vacancy_length_months, placeholder: '1',  input_html: {value:'1'}, label: "AVERAGE VACANCY LENGTH (MONTHS)", type: 'number' %>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :earnings_reinvestment_percent, placeholder: '0', input_html: {value: '0'}, label: "PERCENT OF EARNINGS REINVESTED", type: 'number' %>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= hidden_field_tag(:status, @status) %>
+          </div>
+        </div>
       <br/>
-      <%= f.submit "Next", class: 'btn btn-outline-primary' %>
+      <%= f.submit "NEXT", class: 'btn btn-outline-primary float-right' %>
       <br/><br/><br/>
     <% end %>
   <% end %>
@@ -40,11 +69,22 @@
   <!-- LOCAL ECONOMY -->
   <% if @status == "local economy" %>
     <%= simple_form_for @model do |f| %>
-      <%= f.input :value_growth_percent, placeholder: '0',  input_html: {value: '0'}, label: "Property Value Growth (%)", type: 'number' %>
-      <%= f.input :property_taxes_percent, placeholder: '0',  input_html: {value:'0'}, label: "Annual Property Tax Rate (%)", type: 'number' %>
-      <%= hidden_field_tag(:status, @status) %>
+    <div class="simple_form_content">
+        <div class="row equity_header">
+            <p>EQUITY</p>
+        </div>
+        <div class="row text-center equity_bg">
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+              <%= f.input :value_growth_percent, placeholder: '0',  input_html: {value: '0'}, label: "PROPERTY VALUE GROWTH (%)", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+              <%= f.input :property_taxes_percent, placeholder: '0',  input_html: {value:'0'}, label: "ANNUAL PROPERTY TAX RATE (%)", type: 'number' %>
+            </div>
+            <%= hidden_field_tag(:status, @status) %>
+          </div>
+        </div>
       <br/>
-      <%= f.submit "Next", class: 'btn btn-outline-primary' %>
+      <%= f.submit "NEXT", class: 'btn btn-outline-primary float-right' %>
       <br/><br/><br/>
     <% end %>
   <% end %>
@@ -53,10 +93,19 @@
   <!-- NATIONAL ECONOMY -->
   <% if @status == "national economy" %>
     <%= simple_form_for @model do |f| %>
-      <%= f.input :inflation_rate_percent, placeholder: '2',  input_html: {value:'2'}, label: "Annual Inflation Rate Estimate (%)", type: 'number' %>
-      <%= hidden_field_tag(:status, @status) %>
+    <div class="simple_form_content">
+        <div class="row equity_header">
+            <p>EQUITY</p>
+        </div>
+        <div class="row text-center equity_bg">
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+              <%= f.input :inflation_rate_percent, placeholder: '2',  input_html: {value:'2'}, label: "ANNUAL INFLATION RATE ESTIMATE (%)", type: 'number' %>
+            </div>
+            <%= hidden_field_tag(:status, @status) %>
+          </div>
+        </div>
       <br/>
-      <%= f.submit "Next", class: 'btn btn-outline-primary' %>
+      <%= f.submit "NEXT", class: 'btn btn-outline-primary float-right' %>
       <br/><br/><br/>
     <% end %>
   <% end %>

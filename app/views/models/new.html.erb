@@ -1,27 +1,60 @@
-<br/><br/><br/><br/>
+<br/><br/>
 
 
-<div class=" col-sm-10 col-lg-8 offset-sm-1 offset-lg-2" >
+<div class="col-sm-10 offset-sm-1" >
   
-  <h3 class="uppercase"><%= @status %></h3>
-  <br/><br/>
+  <h3 class="uppercase model-header"><%= @status %></h3>
+  <hr class= "model-header-line">
+  <h4 class= "section-header "> ASSUMPTIONS </h4>
+  <br/>
 
   <%= simple_form_for @model do |f| %>
-    <%= f.input :price, placeholder: '200000', input_html: {value: '200000'}, type: 'number' %>
-    <%= f.input :closing_costs, placeholder: '3000',  input_html: {value: '3000'}, label: "Closing costs", type: 'number' %>
-    <%= f.input :repair_costs, placeholder: '0',  input_html: {value: '0'}, label: "Repair costs", type: 'number' %>
-    <%= f.input :after_repair_value, 
-    placeholder: '200000', 
-    input_html: {value: '200000'}, 
-    label: "Value after repairs", 
-    type: 'number'  %>
-    <%= f.input :rent_monthly, placeholder: '1650',  input_html: {value: '1650'}, label: "Monthly rent", type: 'number' %>
-    <%= f.input :property_upkeep_monthly, placeholder: '100',  input_html: {value: '100'}, label: "Monthly property upkeep", type: 'number' %>
-    <%= f.input :insurance_monthly, placeholder: '0',  input_html: {value: '0'}, label: "Monthly insurance", type: 'number' %>
-    <%= f.input :hoa_fees_monthly, placeholder: '0',  input_html: {value: '0'}, label: "Monthly HOA fees", type: 'number' %>
-    <%= f.input :utilities_monthly, placeholder: '0',  input_html: {value: '0'} , label: "Monthly utilities (if paid by landlord)", type: 'number' %>
+    <div class="simple_form_content">
+        <div class="row equity_header">
+            <p>EQUITY</p>
+        </div>
+        <div class="row text-center equity_bg">
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+                <%= f.input :price, placeholder: '200000', input_html: {value: '200000'}, type: 'number', label: "PURCHASE PRICE" %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+                <%= f.input :closing_costs, placeholder: '3000',  input_html: {value: '3000'}, label: "CLOSING COSTS", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+                <%= f.input :repair_costs, placeholder: '0',  input_html: {value: '0'}, label: "REPAIR COSTS", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+                <%= f.input :after_repair_value,  placeholder: '200000', input_html: {value: '200000'}, label: "PROPERTY VALUE AFTER REPAIRS", type: 'number'  %>
+            </div>
+        </div>
+        <div class="row revenue_header">
+            <p>REVENUE</p>
+        </div>
+        <div class="row text-center revenue_bg">
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+                <%= f.input :rent_monthly, placeholder: '1650',  input_html: {value: '1650'}, label: "MONTHLY RENT", type: 'number' %>
+            </div>
+        </div>
+        <div class="row expenses_header">
+            <p>EXPENSES</p>
+        </div>
+        <div class="row text-center expenses_bg ">
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :property_upkeep_monthly, placeholder: '100',  input_html: {value: '100'}, label: "MONTHLY PROPERTY UPKEEP", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :insurance_monthly, placeholder: '0',  input_html: {value: '0'}, label: "MONTHLY INSURANCE", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :hoa_fees_monthly, placeholder: '0',  input_html: {value: '0'}, label: "MONTHLY HOA FEES", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :utilities_monthly, placeholder: '0',  input_html: {value: '0'} , label: "MONTHLY UTILITIES", type: 'number' %>
+            </div>
+        </div>
+    </div>
     <br/>
-    <%= f.submit "Next", class: 'btn btn-outline-primary' %>
+    <%= f.submit "NEXT", class: 'btn btn-outline-primary float-right' %>
     <br/><br/><br/>
   <% end %>
 </div>

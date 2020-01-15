@@ -1,4 +1,4 @@
-<br/><br/><br/><br/>
+<br/><br/>
 
 <div class=" col-sm-10 col-lg-10 offset-sm-1 offset-lg-1" >
 
@@ -13,12 +13,13 @@
   <table class="table table-hover">
   <thead>
     <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Downpayment</th>
-      <th scope="col">Annual Revenue</th>
-      <th scope="col">Annual Expenses</th>
-      <th scope="col">Price / Profit</th>
-      <th scope="col">Years to Breakeven</th>
+      <th class="text-center", scope="col">ID</th>
+      <th class="text-center", scope="col">Downpayment</th>
+      <th class="text-center", scope="col">Annual Revenue</th>
+      <th class="text-center", scope="col">Annual Expenses</th>
+      <th class="text-center", scope="col">Price / Profit</th>
+      <th class="text-center", scope="col">Years to Breakeven</th>
+      <th class="text-center", scope="col">Edit / Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -37,12 +38,13 @@
 
 
         <tr>
-          <th scope="row"> <%= @num %></th>
-          <td><%= number_to_currency(@downpayment)%></td>
-          <td><%= number_to_currency(@revenue) %></td>
-          <td><%= number_to_currency(@financing_expenses + @operating_expenses) %></td>
-          <td><%= (fin_model.price/(@revenue  - (@financing_expenses + @operating_expenses))).round(2) %></td>
-          <td><%= (1/((@revenue  - (@financing_expenses + @operating_expenses))/@downpayment)).round(1) %></td>
+          <th class="text-center", scope="row"> <%= @num %></th>
+          <td class="text-center"><%= number_to_currency(@downpayment)%></td>
+          <td class="text-center"><%= number_to_currency(@revenue) %></td>
+          <td class="text-center"><%= number_to_currency(@financing_expenses + @operating_expenses) %></td>
+          <td class="text-center"><%= (fin_model.price/(@revenue  - (@financing_expenses + @operating_expenses))).round(2) %></td>
+          <td class="text-center"><%= (1/((@revenue  - (@financing_expenses + @operating_expenses))/@downpayment)).round(1) %></td>
+          <td class="text-center"><i class="fas fa-edit"></i> &nbsp &nbsp <i class="fas fa-trash"></i></td>
         </tr>
 
         <% @num += 1 %>

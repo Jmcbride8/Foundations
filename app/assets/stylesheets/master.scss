@@ -133,7 +133,14 @@ hr.thin {
   margin: 0% 20% 0% 20%;
 }
 
+input .btn .btn-outline-primary {
+  border-radius: 2px !important;
+  width: 3px !important;
+  font-weight: bold !important;
+}
+
 /*code to capitalize or normalize text - particularly headings*/
 .lowercase {text-transform: lowercase; }
 .uppercase { text-transform: uppercase; }
 .capitalize { text-transform: capitalize; }
+
