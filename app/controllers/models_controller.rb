@@ -51,6 +51,11 @@ class ModelsController < ApplicationController
     end
   end
 
+  def destroy
+    @model = Model.find(params[:id])
+    @model.destroy
+    redirect_to models_path, :success => "Your property model has been deleted"
+  end
 
   private
 
