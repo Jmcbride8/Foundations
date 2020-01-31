@@ -13,7 +13,7 @@
   <table class="table table-hover">
   <thead>
     <tr>
-      <th class="text-center", scope="col">ID</th>
+      <th class="text-center", scope="col">Property</th>
       <th class="text-center", scope="col">Profit Margin</th>
       <th class="text-center", scope="col">Annual Revenue</th>
       <th class="text-center", scope="col">Annual Expenses</th>
@@ -27,6 +27,11 @@
     <% @models.each do |fin_model| %>
       <% if fin_model.id.present? %>
         
+        <% if fin_model.street_address == nil or fin_model.appartment_number==nil or fin_model.city ==nil
+              @address = @num
+           else
+              @address = fin_model.street_address + " " + fin_model.appartment_number + ", " + fin_model.city
+           end %>
         <% @downpayment = ((fin_model.downpayment_percent/100) * fin_model.price).round(0) %>
 
         <% @revenue = fin_model.rent_monthly*12 %>
@@ -38,7 +43,7 @@
 
 
         <tr>
-          <th class="text-center", scope="row"> <%= @num %></th>
+          <th class="text-center", scope="row"> <%= @address %></th>
           <td class="text-center"><%= number_to_currency(@downpayment)%></td>
           <td class="text-center"><%= number_to_currency(@revenue) %></td>
           <td class="text-center"><%= number_to_currency(@financing_expenses + @operating_expenses) %></td>

@@ -7,6 +7,60 @@
   <h4 class= "section-header "> ASSUMPTIONS </h4>
   <br/>
 
+  <!-- PROPERTY -->
+  <% if @status == "property" %>
+    <%= simple_form_for @model do |f| %>
+      <div class="simple_form_content">
+        <div class="row equity_header">
+            <p>EQUITY</p>
+        </div>
+        <div class="row text-center equity_bg">
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+                <%= f.input :price, placeholder: '200000', input_html: {value: '200000'}, type: 'number', label: "PURCHASE PRICE" %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+                <%= f.input :closing_costs, placeholder: '3000',  input_html: {value: '3000'}, label: "CLOSING COSTS", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+                <%= f.input :repair_costs, placeholder: '0',  input_html: {value: '0'}, label: "REPAIR COSTS", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+                <%= f.input :after_repair_value,  placeholder: '200000', input_html: {value: '200000'}, label: "PROPERTY VALUE AFTER REPAIRS", type: 'number'  %>
+            </div>
+        </div>
+        <div class="row revenue_header">
+            <p>REVENUE</p>
+        </div>
+        <div class="row text-center revenue_bg">
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+                <%= f.input :rent_monthly, placeholder: '1650',  input_html: {value: '1650'}, label: "MONTHLY RENT", type: 'number' %>
+            </div>
+        </div>
+        <div class="row expenses_header">
+            <p>EXPENSES</p>
+        </div>
+        <div class="row text-center expenses_bg ">
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :property_upkeep_monthly, placeholder: '100',  input_html: {value: '100'}, label: "MONTHLY PROPERTY UPKEEP", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :insurance_monthly, placeholder: '0',  input_html: {value: '0'}, label: "MONTHLY INSURANCE", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :hoa_fees_monthly, placeholder: '0',  input_html: {value: '0'}, label: "MONTHLY HOA FEES", type: 'number' %>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-3 input_element">
+            <%= f.input :utilities_monthly, placeholder: '0',  input_html: {value: '0'} , label: "MONTHLY UTILITIES", type: 'number' %>
+            </div>
+            <%= hidden_field_tag(:status, @status) %>
+        </div>
+      </div>
+      <br/>
+      <%= f.submit "NEXT", class: 'btn btn-outline-primary float-right' %>
+      <br/><br/><br/>
+    <% end %>
+  <% end %>
+
   <!-- FINANCING -->
   <% if @status == "financing" %>
     <%= simple_form_for @model do |f| %>

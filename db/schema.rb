@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_044536) do
+ActiveRecord::Schema.define(version: 2020_01_25_201755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,12 @@ ActiveRecord::Schema.define(version: 2020_01_03_044536) do
     t.decimal "loan_term_length_years"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "street_address"
+    t.string "appartment_number"
+    t.string "city"
+    t.string "state"
+    t.string "postal_code"
+    t.string "country"
   end
 
   create_table "products", force: :cascade do |t|

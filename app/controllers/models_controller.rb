@@ -14,14 +14,14 @@ class ModelsController < ApplicationController
 
   def new
     @model = Model.new
-    @status = "property"
+    @status = "property location"
   end
 
   def create
     puts property_params
-    @model = current_user.models.create(property_params)
+    @model = current_user.models.create(property_address_params)
     if @model.valid?
-      redirect_to edit_model_path(@model.id, status: 'financing')
+      redirect_to edit_model_path(@model.id, status: 'property')
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +36,10 @@ class ModelsController < ApplicationController
     @model = Model.find(params[:id])
     @status = params[:status]
     #binding.pry
-    if @status == "financing"
+    if @status == "property"
+      current_model = @model.update(property_params)
+      redirect_to edit_model_path(@model.id, status: 'financing')
+    elsif @status == "financing"
       current_model = @model.update(financing_params)
       redirect_to edit_model_path(@model.id, status: 'management')
     elsif @status == "management"
@@ -59,7 +62,9 @@ class ModelsController < ApplicationController
 
   private
 
-
+  def property_address_params
+    params.require(:model).permit(:street_address, :appartment_number, :city, :state, :postal_code, :country)
+  end
   def property_params
     params.require(:model).permit(:price, :closing_costs, :repair_costs, :after_repair_value, :rent_monthly, :property_upkeep_monthly, :insurance_monthly, :hoa_fees_monthly, :utilities_monthly)
   end

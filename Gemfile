@@ -71,6 +71,8 @@ source 'https://rails-assets.org' do
 end
 #Gem for easy to create forms
 gem 'simple_form'
+gem 'country_select'
+gem 'country_state_select'
 
 # Gem for user signin and authentication
 gem 'devise'
