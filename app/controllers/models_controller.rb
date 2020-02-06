@@ -36,7 +36,10 @@ class ModelsController < ApplicationController
     @model = Model.find(params[:id])
     @status = params[:status]
     #binding.pry
-    if @status == "property"
+    if @status == "property location"
+      current_model = @model.update(property_params)
+      redirect_to edit_model_path(@model.id, status: 'property')
+    elsif @status == "property"
       current_model = @model.update(property_params)
       redirect_to edit_model_path(@model.id, status: 'financing')
     elsif @status == "financing"
