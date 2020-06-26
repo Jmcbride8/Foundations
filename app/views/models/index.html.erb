@@ -15,11 +15,13 @@
     <tr>
       <th class="text-left", scope="col">Property</th>
       <th class="text-center actions", scope="col">Actions</th>
+      <th title="Income after all expenses", class="text-center", scope="col">Annual Net Income</th>
+      <th title="Income after all expenses / invested amount", class="text-center", scope="col">Yield</th>
       <th title="Income before mortgage payments", class="text-center", scope="col">Net Operating Income</th>
-      <th class="text-center", scope="col">Cash Flow</th>
-      <th class="text-center", scope="col">Yield</th>
+      <th title="Income / expenses", class="text-center", scope="col">Profit Margin</th>
+      <th title="NOI / property cost", class="text-center", scope="col">Cap Rate</th>
       <th class="text-center", scope="col">Years to Breakeven</th>
-      <th class="text-center", scope="col">Year 5 Returns</th>
+      <th class="text-center", scope="col">Years to Payoff</th>
       <th class="text-center", scope="col">Year 15 Returns</th>
       <th class="text-center", scope="col">Year 30 Returns</th>
     </tr>
@@ -29,39 +31,32 @@
     <% @models.each do |fin_model| %>
       <% if fin_model.id.present? %>
         
-          <% 
-          @address_1 = fin_model.street_address + " " + fin_model.appartment_number
-           
-          @address_2 = fin_model.city + ", " +fin_model.state + " " + fin_model.postal_code
-          %>
+        <!-- ADDRESS -->  
+        <% @address_1 = fin_model.street_address + " " + fin_model.appartment_number
+          @address_2 = fin_model.city + ", " +fin_model.state + " " + fin_model.postal_code %>
 
         <!-- KEY METRICS -->        
-        
-        
-        <% @income = fin_model.rent_monthly * 12
-
+        <% 
+        @income = fin_model.rent_monthly * 12
         @vacancy_expenses = (fin_model.average_vacancy_length_months / (fin_model.average_tenant_stay_yrs * 12)) * fin_model.rent_monthly
-
         @operating_expenses = ((fin_model.property_upkeep_monthly + fin_model.insurance_monthly + fin_model.hoa_fees_monthly + fin_model.utilities_monthly) * 12 ) + (fin_model.management_fees_percent/100 * @income) + (fin_model.property_taxes_percent/100 * fin_model.after_repair_value) +  @vacancy_expenses
-
         @financing_expenses = (fin_model.interest_rate_percent/100 * ((1-(fin_model.downpayment_percent/100)) * fin_model.price)) + (fin_model.property_mortgage_insurance_monthly * 12)
-
         @downpayment = (fin_model.downpayment_percent/100 * fin_model.price).round(0) 
-  
+        @value = fin_model.after_repair_value
         %>
+
         <!-- NET OPERATING INCOME -->
-        <%
-
-        @net_income = @income - @operating_expenses - @vacancy_expenses
+        <% @net_op_income = @income - @operating_expenses - @vacancy_expenses %>
         
-        %>
         <!-- CASH FLOW -->
-        <%
+        <% @cash_flow = @net_op_income - @financing_expenses %>
 
-        @cash_flow = @net_income - @financing_expenses
+        <!-- COMPLEX MEASURES -->
+        
 
-        %>
 
+
+        <!-- PRINT MEASURES -->
         <tr>
           <td class="text-left property_address", scope="row"><%= @address_1 %><br><%= @address_2 %></th>
            <td class="text-center field-min-width actions">
@@ -73,9 +68,10 @@
               <i class="fas fa-trash trash"></i>
             <% end %>
           </td>
-          <td class="text-center field-min-width "><%= number_to_currency(@net_income, locale: :en, precision: 0)%></td>
           <td class="text-center field-min-width "><%= number_to_currency(@cash_flow, locale: :en, precision: 0) %></td>
-          <td class="text-center field-min-width "><%= (@cash_flow/@downpayment).round(2)%>&#37</td>
+          <td class="text-center field-min-width "><%= (@cash_flow/@downpayment*100).round(1)%>&#37</td>
+          <td class="text-center field-min-width "><%= number_to_currency(@net_op_income, locale: :en, precision: 0)%></td>
+          <td class="text-center field-min-width "><%= (@net_op_income/@value*100).round(1)%>&#37</td>
           <td class="text-center field-min-width "></td>
           <td class="text-center field-min-width "></td>
           <td class="text-center field-min-width "></td>
