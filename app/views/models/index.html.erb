@@ -15,46 +15,67 @@
     <tr>
       <th class="text-left", scope="col">Property</th>
       <th class="text-center actions", scope="col">Actions</th>
-      <th title="Income after all expenses", class="text-center", scope="col">Annual Net Income</th>
-      <th title="Income after all expenses / invested amount", class="text-center", scope="col">Yield</th>
-      <th title="Income before mortgage payments", class="text-center", scope="col">Net Operating Income</th>
-      <th title="Income / expenses", class="text-center", scope="col">Profit Margin</th>
-      <th title="NOI / property cost", class="text-center", scope="col">Cap Rate</th>
-      <th class="text-center", scope="col">Years to Breakeven</th>
-      <th class="text-center", scope="col">Years to Payoff</th>
-      <th class="text-center", scope="col">Year 15 Returns</th>
-      <th class="text-center", scope="col">Year 30 Returns</th>
+      <th title="Income after all expenses", class="text-center", scope="col">Monthly Net Income</th>
+      <th title="Income after operating expenses", class="text-center", scope="col">Monthly Net Operating Income</th>
+      <th title="Net Income / Net Expenses", class="text-center", scope="col">Net Profit Margin</th>
+      <th title="Net Operating Income (NOI) / Property Purchase Price", class="text-center", scope="col">Cap Rate</th>
+      <th title="Net Income / Original Invested Amount", class="text-center", scope="col">Cash Yield</th>
+      <th title="NOI / Original invested amount", class="text-center", scope="col">Years to Breakeven</th>
+      <th data-toggle="tooltip", title="test" class="text-center", scope="col">Year 15 Returns</th>
+      <th data-toggle="tooltip", title="test", class="text-center", scope="col">Year 30 Returns</th>
     </tr>
   </thead>
   <tbody>
     <% @num = 1 %>
     <% @models.each do |fin_model| %>
       <% if fin_model.id.present? %>
-        
+      
+
         <!-- ADDRESS -->  
         <% @address_1 = fin_model.street_address + " " + fin_model.appartment_number
           @address_2 = fin_model.city + ", " +fin_model.state + " " + fin_model.postal_code %>
 
-        <!-- KEY METRICS -->        
+        <!-- KEY MEASURES -->        
         <% 
-        @income = fin_model.rent_monthly * 12
-        @vacancy_expenses = (fin_model.average_vacancy_length_months / (fin_model.average_tenant_stay_yrs * 12)) * fin_model.rent_monthly
-        @operating_expenses = ((fin_model.property_upkeep_monthly + fin_model.insurance_monthly + fin_model.hoa_fees_monthly + fin_model.utilities_monthly) * 12 ) + (fin_model.management_fees_percent/100 * @income) + (fin_model.property_taxes_percent/100 * fin_model.after_repair_value) +  @vacancy_expenses
-        @financing_expenses = (fin_model.interest_rate_percent/100 * ((1-(fin_model.downpayment_percent/100)) * fin_model.price)) + (fin_model.property_mortgage_insurance_monthly * 12)
+        @loan_principal = (1 - fin_model.downpayment_percent/100) * fin_model.price 
+        @income = fin_model.rent_monthly * 12 
+        @vacancy_rate = (fin_model.average_vacancy_length_months / (fin_model.average_tenant_stay_yrs * 12))  
+        @vacancy_expenses = @vacancy_rate * fin_model.rent_monthly 
+        @investment_costs = fin_model.price * (fin_model.downpayment_percent / 100) + fin_model.closing_costs + fin_model.repair_costs 
+        @operating_expenses = ((fin_model.property_upkeep_monthly + fin_model.insurance_monthly + fin_model.hoa_fees_monthly + fin_model.utilities_monthly) * 12 ) + (fin_model.management_fees_percent/100 * @income) + ((fin_model.property_taxes_percent / 100) * fin_model.after_repair_value) +  @vacancy_expenses 
+        @monthly_interest_rate = fin_model.interest_rate_percent/12/100 
+        @n = fin_model.loan_term_length_years*12
+        @monthly_mortgage_payment = @loan_principal*(@monthly_interest_rate*(1+@monthly_interest_rate)**@n)/(((1+@monthly_interest_rate)**@n) - 1) 
+        @financing_expenses = (@monthly_mortgage_payment*12) + (fin_model.property_mortgage_insurance_monthly * 12) 
         @downpayment = (fin_model.downpayment_percent/100 * fin_model.price).round(0) 
-        @value = fin_model.after_repair_value
+        @value = fin_model.after_repair_value 
         %>
+        
+
+
 
         <!-- NET OPERATING INCOME -->
-        <% @net_op_income = @income - @operating_expenses - @vacancy_expenses %>
-        
-        <!-- CASH FLOW -->
+        <% @net_op_income = @income - @operating_expenses %>
+
+        <!-- NET INCOME aka CASH FLOW -->
         <% @cash_flow = @net_op_income - @financing_expenses %>
 
-        <!-- COMPLEX MEASURES -->
-        
+        <!-- NET PROFIT MARGINS -->
+        <% @net_profit_margin = @cash_flow / (@operating_expenses + @financing_expenses)  %>
 
+        <!-- CASH YIELD aka CASH ON CASH-->
+        <% @cash_yield = @cash_flow / @investment_costs %>
 
+        <!-- YEARS TO BREAKEVEN -->
+        <% @yrs_to_breakeven = @investment_costs/@cash_flow %>
+
+        <!-- YEAR 15 RETURNS -->
+        <!-- need to add in equity gains & market ownership - inflation adjusted -->
+        <% @yr_15_returns = 15 * @cash_flow %>
+
+        <!-- YEAR 15 RETURNS -->
+        <!-- need to add in equity gains & market ownership - inflation adjusted -->
+        <% @yr_30_returns = 30 * @cash_flow %>
 
         <!-- PRINT MEASURES -->
         <tr>
@@ -68,14 +89,14 @@
               <i class="fas fa-trash trash"></i>
             <% end %>
           </td>
-          <td class="text-center field-min-width "><%= number_to_currency(@cash_flow, locale: :en, precision: 0) %></td>
-          <td class="text-center field-min-width "><%= (@cash_flow/@downpayment*100).round(1)%>&#37</td>
-          <td class="text-center field-min-width "><%= number_to_currency(@net_op_income, locale: :en, precision: 0)%></td>
-          <td class="text-center field-min-width "><%= (@net_op_income/@value*100).round(1)%>&#37</td>
-          <td class="text-center field-min-width "></td>
-          <td class="text-center field-min-width "></td>
-          <td class="text-center field-min-width "></td>
-          <td class="text-center field-min-width "></td>
+          <td class="text-center field-min-width "><%= number_to_currency(@cash_flow/12, locale: :en, precision: 0) %></td>
+          <td class="text-center field-min-width "><%= number_to_currency(@net_op_income/12, locale: :en, precision: 0) %></td>
+          <td class="text-center field-min-width "><%= (@net_profit_margin*100).round(1) %>&#37</td>
+          <td class="text-center field-min-width "><%= (@net_op_income/@value*100).round(1) %> &#37 </td>
+          <td class="text-center field-min-width "><%= (@cash_yield*100).round(1) %> &#37 </td>
+          <td class="text-center field-min-width "><%= (@yrs_to_breakeven).round(1) %></td>
+          <td class="text-center field-min-width "><%= number_to_currency(@yr_15_returns, locale: :en, precision: 0) %> </td>
+          <td class="text-center field-min-width "><%= number_to_currency(@yr_30_returns, locale: :en, precision: 0) %> </td>
 
         </tr>
 

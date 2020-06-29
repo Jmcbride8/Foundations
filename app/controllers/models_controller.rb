@@ -18,7 +18,7 @@ class ModelsController < ApplicationController
   end
 
   def create
-    puts property_params
+    #puts property_address_params
     @model = current_user.models.create(property_address_params)
     if @model.valid?
       redirect_to edit_model_path(@model.id, status: 'property')
@@ -37,7 +37,7 @@ class ModelsController < ApplicationController
     @status = params[:status]
     #binding.pry
     if @status == "property location"
-      current_model = @model.update(property_params)
+      current_model = @model.update(property_address_params)
       redirect_to edit_model_path(@model.id, status: 'property')
     elsif @status == "property"
       current_model = @model.update(property_params)
@@ -72,7 +72,7 @@ class ModelsController < ApplicationController
     params.require(:model).permit(:price, :closing_costs, :repair_costs, :after_repair_value, :rent_monthly, :property_upkeep_monthly, :insurance_monthly, :hoa_fees_monthly, :utilities_monthly)
   end
   def financing_params
-    params.require(:model).permit(:downpayment_percent, :interest_rate_percent, :property_mortgage_insurance_monthly,:loan_term_length_years)
+    params.require(:model).permit(:downpayment_percent, :interest_rate_percent, :property_mortgage_insurance_monthly, :loan_term_length_years)
   end
   def management_params
     params.require(:model).permit(:management_fees_percent, :average_tenant_stay_yrs, :average_vacancy_length_months, :earnings_reinvestment_percent)

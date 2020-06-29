@@ -129,10 +129,10 @@
         </div>
         <div class="row text-center equity_bg">
             <div class="col-sm-6 col-md-6 col-lg-3 input_element">
-              <%= f.input :value_growth_percent, placeholder: '0',  input_html: {value: '0'}, label: "PROPERTY VALUE GROWTH (%)", type: 'number' %>
+              <%= f.input :value_growth_percent, placeholder: '2',  input_html: {value: '2'}, label: "PROPERTY VALUE GROWTH (%)", type: 'number' %>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-3 input_element">
-              <%= f.input :property_taxes_percent, placeholder: '0',  input_html: {value:'0'}, label: "ANNUAL PROPERTY TAX RATE (%)", type: 'number' %>
+              <%= f.input :property_taxes_percent, placeholder: '1',  input_html: {value:'1'}, label: "ANNUAL PROPERTY TAX RATE (%)", type: 'number' %>
             </div>
             <%= hidden_field_tag(:status, @status) %>
           </div>
