@@ -2,12 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
 .model-header{
   font-size:55px;
 }
 
 .model-header-line {
-  border-color: rgba(68, 114, 196,1);
+  border-color: rgba(112, 173, 71,1);
   border-width: 3px;
 }
 
@@ -119,16 +121,20 @@ td.field-min-width {
 
 tr td.property_address{
   font-weight: bold;
-  font-color: rgba(128,128,128,1);
+  font-color: rgba(112,173,71,1);
   white-space: nowrap;
-  padding-right: 30px;
+  padding-right: 40px;
 }
 
 tr:hover td.property_address{
-  color: rgba(128, 128, 128,1);
+  color: rgba(190, 70, 10,1);
 }
 
 td.actions,th.actions {
   background-color: rgba(230, 230, 230,1)
 }
 
+th {
+  border-bottom: 5px solid #70AD47; 
+  border-bottom-style: solid;
+}

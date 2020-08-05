@@ -1,6 +1,5 @@
 <%= image_tag("backgrounds/bg8.jpg", class: "devise-background") %>
-<br/><br/>
-<div class="booyah-box col-sm-10 col-lg-4 col-xl-2 offset-sm-1 offset-lg-4 offset-xl-5">
+<div class="booyah-box col-sm-10 col-lg-6 col-xl-4 offset-sm-1 offset-lg-3 offset-xl-4">
   <h2>Sign up</h2>
 
   <br/>
@@ -20,13 +19,11 @@
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
     </div>
-
+    <br/>
     <div class="form-actions float-right">
       <%= f.button :submit, "Sign up", class: 'btn btn-primary' %>
     </div>
   <% end %>
 
-  <br/>
-  <%= render "devise/shared/links" %>
 </div>
 <br/><br/><br/>

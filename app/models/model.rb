@@ -3,7 +3,7 @@ class Model < ApplicationRecord
   belongs_to :user
 
   #economy
-  #validates :inflation_rate_percent, allow_blank: true, numericality: true
+  validates :inflation_rate_percent, allow_blank: true, numericality: true
 
   #financing
   #validates :downpayment_percent, allow_blank: true, numericality: {greater_than_or_equal_to: 0}

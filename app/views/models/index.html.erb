@@ -14,7 +14,6 @@
   <thead>
     <tr>
       <th class="text-left", scope="col">Property</th>
-      <th class="text-center actions", scope="col">Actions</th>
       <th title="Income after all expenses", class="text-center", scope="col">Monthly Net Income</th>
       <th title="Income after operating expenses", class="text-center", scope="col">Monthly Net Operating Income</th>
       <th title="Net Income / Net Expenses", class="text-center", scope="col">Net Profit Margin</th>
@@ -23,6 +22,7 @@
       <th title="NOI / Original invested amount", class="text-center", scope="col">Years to Breakeven</th>
       <th data-toggle="tooltip", title="test" class="text-center", scope="col">Year 15 Returns</th>
       <th data-toggle="tooltip", title="test", class="text-center", scope="col">Year 30 Returns</th>
+      <th class="text-center actions", scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -80,15 +80,6 @@
         <!-- PRINT MEASURES -->
         <tr>
           <td class="text-left property_address", scope="row"><%= @address_1 %><br><%= @address_2 %></th>
-           <td class="text-center field-min-width actions">
-            <%= link_to edit_model_path(fin_model, status: "property"), class: "hover_edit" do %>
-              <i class="fas fa-edit edit"></i> 
-            <% end %> 
-            &nbsp &nbsp 
-            <%= link_to model_path(fin_model), data: {confirm: "Are you sure?"}, :method => :delete, class: "hover_delete" do %>
-              <i class="fas fa-trash trash"></i>
-            <% end %>
-          </td>
           <td class="text-center field-min-width "><%= number_to_currency(@cash_flow/12, locale: :en, precision: 0) %></td>
           <td class="text-center field-min-width "><%= number_to_currency(@net_op_income/12, locale: :en, precision: 0) %></td>
           <td class="text-center field-min-width "><%= (@net_profit_margin*100).round(1) %>&#37</td>
@@ -97,7 +88,15 @@
           <td class="text-center field-min-width "><%= (@yrs_to_breakeven).round(1) %></td>
           <td class="text-center field-min-width "><%= number_to_currency(@yr_15_returns, locale: :en, precision: 0) %> </td>
           <td class="text-center field-min-width "><%= number_to_currency(@yr_30_returns, locale: :en, precision: 0) %> </td>
-
+          <td class="text-center field-min-width actions">
+            <%= link_to edit_model_path(fin_model, status: "property"), class: "hover_edit" do %>
+              <i class="fas fa-edit edit"></i> 
+            <% end %> 
+            &nbsp &nbsp 
+            <%= link_to model_path(fin_model), data: {confirm: "Are you sure?"}, :method => :delete, class: "hover_delete" do %>
+              <i class="fas fa-trash trash"></i>
+            <% end %>
+          </td>
         </tr>
 
         <% @num += 1 %>

@@ -11,10 +11,13 @@
   padding: 0;
 }
 
+
 body{
   padding-top: 50px; 
   margin-top: 0px; 
-  margin:0;
+  margin:0px;
+  width: 100%;
+  height: 100%;
   font-size:15px;
   font-family: Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;
 }
@@ -31,6 +34,13 @@ body{
     margin-right:20px;
   }
 
+  #navbar-company-name {
+    color: rgba(112, 173, 71,1);
+    font-size: 20px;
+    white-space: nowrap;
+    padding-right: 50px;
+  }
+
   a {
     color: rgba(128, 128, 128,1);
   }
@@ -41,7 +51,7 @@ body{
   }
 
   #navbarSupportedContent a:hover{
-    color: rgba(68, 114, 196,1);
+    color: rgba(170, 70, 10,1);
     text-decoration: none;
   }
 
@@ -65,41 +75,52 @@ h1, h2, h3, h4, h5, h6,p, .navbar {
 
 
 /*Home page background*/
+.eliminate_padding{
+  padding: 0px 0px 0px;
+}
+
 .homebackground{
-  position: fixed;
-  background: image_url('FoundationHomepage.png');
-  background-repeat: no-repeat;
-  background-position: left top;
-  padding: 0px;
+  width: 100%;
+  height: 600px;
+  object-position: left top;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
   padding-top: 0vh;
-  height:100vh; 
+  object-fit: cover;
   align-items:center;
   vertical-align: middle;
-  z-index: -1
 }
 
 .transparent-layer h1{
   font-size: 60px;
   font-style: normal;
   z-index: 2;
+  padding-bottom: 10px;
 }
 
 .transparent-layer h2 {
-  font-size: 20px;
-  font-style: italic;
+  font-size: 30px;
+  font-style: normal;
   z-index: 2;
 }
 
 /* semi-transparent box over the background   */
 .transparent-layer {
-  background-color: rgba(68, 114, 196, 0.6);
+  background-color: rgba(112, 173, 71, 0.8);
   position: absolute;
-  top: 45%;
+  top: 50%;
   transform: translateY(-50%);
   width: 100%;
+  padding-left: 0%;
+  padding-right: 0%;
+  margin-right: 0%;
+  overflow-x: hidden;
   z-index: 1;
   align-items: center;
   text-align: center;
+  object-fit: cover;
   color: white;
   font: calibri;
   }
@@ -108,10 +129,12 @@ h1, h2, h3, h4, h5, h6,p, .navbar {
 .devise-background{
   position: fixed;
   width: 100%;
+  height: 100%;
   padding-top: 0vh;
-  background-position: center;
+  background-position: left top;
   background-repeat: no-repeat;
   background-size: cover;
+  object-fit: cover;
   z-index: -1;
   margin-left: 0;
 
@@ -121,11 +144,49 @@ h1, h2, h3, h4, h5, h6,p, .navbar {
   -moz-box-shadow: 1px 1px 2px 0 #d0d0d0;
   -webkit-box-shadow: 1px 1px 2px 0 #d0d0d0;
   box-shadow: 1px 1px 2px 0 #d0d0d0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background: #fff;
   border: 1px solid #ccc;
   border-color: #e4e4e4 #bebebd #bebebd #e4e4e4;
-  padding: 30px 40px;
+  padding: 40px 50px;
   margin-top: 5vh;
+}
+
+div.Portal_cards{
+  position: relative;
+  flex-flow: row wrap;
+  z-index: -1;
+  margin-left: 0px;
+  margin-right: 0px;
+
+}
+
+div.Portal_container{
+  position: relative;
+  border-radius: 8px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 100%;
+  height: 150px;
+  margin-left: 10%;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+  text-align: center;
+}
+
+h3.Portal_card {
+  font-size: 30px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+p.Portal_card {
+  font-size: 20px;
+  width: 100%;
 }
 
 hr.thin {
@@ -183,8 +244,8 @@ input .btn .btn-outline-primary {
   left: 0;
   right: 100%;
   bottom: 0;
-  background: rgba(68, 114, 196,1);
-  height: 3px;
+  background: rgba(170, 70, 10, 1);
+  height: 2px;
   -webkit-transition-property: right;
   transition-property: right;
   -webkit-transition-duration: 0.3s;
